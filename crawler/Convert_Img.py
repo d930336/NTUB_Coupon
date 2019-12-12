@@ -1,7 +1,5 @@
 import pytesseract
 import re
-from PIL import Image
-
 
 #去雜訊
 def convert_Image(img,standard=127.5):
