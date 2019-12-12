@@ -1,6 +1,5 @@
 import pandas as pd
 import mysql.connector
-from Coupon_Backend_Final.crawler.password import My_password
 import re
 
 # 切割特殊符號，使內容只剩下中文，英文，數字
