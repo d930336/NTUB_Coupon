@@ -1,14 +1,12 @@
 # Create your views here.
 from rest_framework import viewsets
-from rest_framework.parsers import JSONParser
-from rest_framework.permissions import IsAuthenticated,AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 #permission(用於我的最愛)
 from util.permission import IsOwnerOrReadOnly
 from rest_framework.response import Response
-from rest_framework import status,generics,mixins,reverse
+from rest_framework import status,mixins
 
 from .models import Coupon,User,UserFav,UserAccounting
 from .serializers import  CouponSerializer,UserSerializer ,UserFavSerializer,UserAccountingSerializer
@@ -52,7 +50,6 @@ class PasswordResetEmail(BaseEmailMessage):
 ##激活帳號
 class ActivateUserByGet(APIView):
     def get (self, request, uid, token):
-
             #獲取網址中的uid和token，透過requests中的post方法自行post進去做激活
             protocol = 'https://' if request.is_secure() else 'http://'
             web_url = protocol + request.get_host()
@@ -68,7 +65,6 @@ class ActivateUserByGet(APIView):
 
 ##重設密碼
 class ResetPasswordUserByGet(APIView):
-
     def get (self, request, uid, token):
             #獲取網址中的uid和token，透過requests中的post方法自行post進去做激活
             new_password = RandomPassword()
@@ -111,8 +107,6 @@ class UserViewSet(viewsets.GenericViewSet,
         # 只能看到自己的收藏，不能看到別人的
         return User.objects.filter(user=self.request.user)
 
-
-#viewsets.ModelViewSet  測試用
 # Create your views here.
 class CouponViewSet(viewsets.GenericViewSet
                     ,mixins.RetrieveModelMixin
@@ -139,7 +133,6 @@ class CouponViewSet(viewsets.GenericViewSet
 
     #因為在serializers 是 coupons ->所以這裡不是coupon_id
     lookup_field = 'coupon_id'
-
 
 #我的最愛
 class UserFavViewset(viewsets.GenericViewSet
