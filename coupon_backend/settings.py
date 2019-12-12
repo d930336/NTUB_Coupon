@@ -56,9 +56,9 @@ INSTALLED_APPS = [
     'api',
     'django_filters', #自定義過濾器
 ]
-# rest-auth registration setting (設定要用哪一個domain)
-SITE_ID = 2
 
+# rest-auth registration setting (設定要用哪一個domain)
+SITE_ID = 3
 
 #=================django-restframework-jwt=======================
 # #設定token時效
@@ -73,7 +73,6 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
 }
 #=================django-restframework-jwt=======================
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,7 +104,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'coupon_backend.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -147,7 +145,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -160,7 +157,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
