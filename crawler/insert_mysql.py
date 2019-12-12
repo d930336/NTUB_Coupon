@@ -14,32 +14,32 @@ class Set_Mysql():
         """
                 連線到資料庫
                 """
-        self._mycursor = self._conn.cursor()
-        self._mycursor.execute('use ' + str(self._db))
+        self._my_cursor = self._conn.cursor()
+        self._my_cursor.execute('use ' + str(self._db))
     def prevent_duplicate(self):
         """
                 輸入進資料庫
                 """
         title_data = (self._title,)
         sql = "select * from mangerdb_item where title = %s"
-        self._mycursor.execute(sql, title_data)
-        myresult = self._mycursor.fetchall()
-        if myresult:
+        self._my_cursor.execute(sql, title_data)
+        my_result = self._my_cursor.fetchall()
+        if my_result:
             print('重複的資料', 'id', id, '標題', title_data[0])
         else:
             try:
                 insert_sql = "insert ignore into mangerdb_item (id , title ,Myclass , content) values (%s,%s,%s,%s)"
                 insert_data = (self._id, self._title, self._class, self._content)
-                self._mycursor.execute(insert_sql, insert_data)
+                self._my_cursor.execute(insert_sql, insert_data)
                 self._conn.commit()
             except mysql.connector.Error as error:
                 self._conn.rollback()
             finally:
-                if self._mycursor.rowcount:
+                if self._my_cursor.rowcount:
                     print("資料成功輸入")
                 else:
                     time_id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
                     insert_data = (self._id, self._title, self._class, self._content)
-                    self._mycursor.execute(insert_sql, insert_data)
+                    self._my_cursor.execute(insert_sql, insert_data)
                     self._conn.commit()
-                    print(self._mycursor.rowcount, "record inserted.", "id改為時間參數")
+                    print(self._my_cursor.rowcount, "record inserted.", "id改為時間參數")

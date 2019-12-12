@@ -35,7 +35,6 @@ add_Tag = ''
 
 today_judge = ''
 
-
 # 判斷檔名
 def judge(x):
     if "jpg" in x or "png" in x:
