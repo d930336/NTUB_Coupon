@@ -179,7 +179,6 @@ LOGIN_REDIRECT_URL = '/login'
 
 #讓user一定要填email
 ACCOUNT_EMAIL_REQUIRED = True
-
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 REST_USE_JWT = True
