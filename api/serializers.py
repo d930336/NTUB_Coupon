@@ -1,9 +1,6 @@
 from rest_framework import serializers
-
-#使用者收藏
-from rest_framework.validators import UniqueTogetherValidator
-
 from .models import Coupon,User,UserFav,UserAccounting
+from rest_framework.validators import UniqueTogetherValidator
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 
