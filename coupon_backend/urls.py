@@ -7,11 +7,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from api.views import (CouponViewSet,
-                              UserViewSet,
-                              UserFavViewset,
-                              ActivateUserByGet,
-                              ResetPasswordUserByGet,
-                              UserAccountingViewset, )
+                      UserViewSet,
+                      UserFavViewset,
+                      ActivateUserByGet,
+                      ResetPasswordUserByGet,
+                      UserAccountingViewset, )
 #rest_auth
 from rest_auth.views import (
     LoginView, LogoutView, UserDetailsView, PasswordChangeView,
