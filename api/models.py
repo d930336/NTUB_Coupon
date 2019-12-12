@@ -6,10 +6,12 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     created = models.DateTimeField(auto_now_add=True,verbose_name="建立時間")
     gender=models.CharField(max_length=1,verbose_name="性別")
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True,verbose_name = '信箱')
     REQUIRED_FIELDS = ["gender","email"]
 
     class Meta:
+        verbose_name = '使用者'
+        verbose_name_plural = verbose_name
         ordering = ('created',)
 
 class Coupon(models.Model):
